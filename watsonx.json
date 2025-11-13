@@ -1,15 +1,45 @@
 {
-  "webhooks": [
-    {
-      "name": "Copy Summary Webhook",
-      "url": "https://your-vercel-app.vercel.app/api/copy-summary",
-      "method": "POST",
-      "headers": {
-        "Content-Type": "application/json"
-      },
-      "body": {
-        "summary": "$watsonx_output"
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Copy Summary Webhook",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/copy-summary": {
+      "post": {
+        "summary": "Receive Watsonx summary and respond",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "summary": { "type": "string" }
+                },
+                "required": ["summary"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Summary received successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string" },
+                    "message": { "type": "string" },
+                    "summary": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
-  ]
+  }
 }
