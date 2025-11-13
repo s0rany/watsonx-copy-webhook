@@ -4,6 +4,12 @@
     "title": "Copy Summary Webhook",
     "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "https://watsonx-copy-webhook.vercel.app/",
+      "description": "Vercel deployment"
+    }
+  ],
   "paths": {
     "/api/copy-summary": {
       "post": {
